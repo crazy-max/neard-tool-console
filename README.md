@@ -35,6 +35,26 @@ This a sub-repo of [Neard project](https://github.com/crazy-max/neard) involving
 * http://sourceforge.net/projects/console/files/console-devel/2.00/
 * https://jpsoft.com/all-downloads/downloads.html
 
+## Contribute
+
+If you want to contribute to this bundle and create new bundles, you have to download [neard-dev](https://github.com/crazy-max/neard-dev) in the parent folder of the bundle.
+Directory structure example :
+
+```
+[-] neard-dev
+ | [-] build
+ |  |  | build-commons.xml 
+[-] neard-tool-console
+ |  | build.xml
+```
+
+To create a new bundle :
+* Do not forget to increment the `build.release` in the `build.properties` file.
+* If you want you can change the `build.path` (default `C:\neard-build`).
+* Open a command prompt in your bundle folder and call the Ant target `release` : `ant release`.
+* Upload your release on a file hosting system like [Sendspace](https://www.sendspace.com/).
+* Create an [issue on Neard repository](https://github.com/crazy-max/neard/issues) to integrate your release.
+
 ## Issues
 
 Issues must be reported on [Neard repository](https://github.com/crazy-max/neard/issues).<br />
