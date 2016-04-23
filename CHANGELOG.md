@@ -1,5 +1,11 @@
 # Changelog
 
+## r3 (2016/04/23)
+
+This release works since **[Neard 1.0.19](https://github.com/crazy-max/neard/releases/tag/v1.0.19)**
+
+* Move icons to Neard core resources
+
 ## r2 (2016/04/10)
 
 This release works since **[Neard 1.0.17](https://github.com/crazy-max/neard/releases/tag/v1.0.17)**

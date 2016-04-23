@@ -24,11 +24,11 @@ This a sub-repo of [Neard project](https://github.com/crazy-max/neard) involving
 
 ![](https://raw.github.com/crazy-max/neard-tool-console/master/img/star-20160403.png) : Default bundle on Neard.
 
-|                      | Console pack releases | Console and TCC/LE release date | Neard release | Download |
-| ---------------------|:---------------------:|:-------------------------------:|:-------------:|:--------:|
-| **Console 2.00.148** | N/A | 2011/10/03 | [r1](https://github.com/crazy-max/neard-tool-console/releases/tag/r1) | [neard-console-2.00.148-r1.zip](https://github.com/crazy-max/neard-tool-console/releases/download/r1/neard-console-2.00.148-r1.zip) |
-| **Console p1** ![](https://raw.github.com/crazy-max/neard-tool-console/master/img/star-20160403.png) | Console 2.00.148<br />TCC/LE 14.0.0.6 | 2011/10/03<br />2015/09/01 | [r2](https://github.com/crazy-max/neard-tool-console/releases/tag/r2) | [neard-console-p1-r2.zip](https://github.com/crazy-max/neard-tool-console/releases/download/r2/neard-console-p1-r2.zip) |
-| **Console p2** | Console 2.00.148<br />TCC/LE 14.0.0.9 | 2011/10/03<br />2016/02/05 | [r2](https://github.com/crazy-max/neard-tool-console/releases/tag/r2) | [neard-console-p2-r2.zip](https://github.com/crazy-max/neard-tool-console/releases/download/r2/neard-console-p2-r2.zip) |
+|                      | Console pack releases | Console and TCC/LE release date | Neard release | Neard compatibility | Download |
+| ---------------------|:---------------------:|:-------------------------------:|:-------------:|:-------------------:|:--------:|
+| **Console 2.00.148** | N/A | 2011/10/03 | <= 1.0.16 | [r1](https://github.com/crazy-max/neard-tool-console/releases/tag/r1) | [neard-console-2.00.148-r1.zip](https://github.com/crazy-max/neard-tool-console/releases/download/r3/neard-console-2.00.148-r1.zip) |
+| **Console p1**       | Console 2.00.148<br />TCC/LE 14.0.0.6 | 2011/10/03<br />2015/09/01 | >= 1.0.19 | [r3](https://github.com/crazy-max/neard-tool-console/releases/tag/r3) | [neard-console-p1-r3.zip](https://github.com/crazy-max/neard-tool-console/releases/download/r3/neard-console-p1-r3.zip) |
+| **Console p2** ![](https://raw.github.com/crazy-max/neard-tool-console/master/img/star-20160403.png) | Console 2.00.148<br />TCC/LE 14.0.0.9 | 2011/10/03<br />2016/02/05 | >= 1.0.19 | [r3](https://github.com/crazy-max/neard-tool-console/releases/tag/r3) | [neard-console-p2-r3.zip](https://github.com/crazy-max/neard-tool-console/releases/download/r3/neard-console-p2-r3.zip) |
 
 ## Sources
 
