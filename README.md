@@ -8,6 +8,7 @@ See [Console Wiki page on Neard](https://github.com/crazy-max/neard/wiki/toolCon
 
 * http://sourceforge.net/projects/console/files/console-devel/2.00/
 * https://jpsoft.com/all-downloads/downloads.html
+* https://github.com/adoxa/ansicon
 
 ## Issues
 
