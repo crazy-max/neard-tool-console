@@ -1,10 +1,11 @@
 # Changelog
 
-## r3 (2016/04/23)
+## r3 (2016/04/29)
 
 This release works since **[Neard 1.0.19](https://github.com/crazy-max/neard/releases/tag/v1.0.19)**
 
 * Move icons to Neard core resources
+* Add [ANSICON](https://github.com/adoxa/ansicon) to resolve ANSI escape sequences
 
 ## r2 (2016/04/10)
 
