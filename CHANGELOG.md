@@ -1,7 +1,5 @@
 # Changelog
 
-### [Check compatibility with Neard](https://github.com/crazy-max/neard/wiki/toolConsole#latest) before downloading.
-
 ## r3 (2016/04/29)
 
 * Move icons to Neard core resources
@@ -15,4 +13,4 @@
 
 ## r1 (2016/04/10)
 
-* Init repo with Console from [Neard](https://github.com/crazy-max/neard)
+* Init repo with Console from Neard
