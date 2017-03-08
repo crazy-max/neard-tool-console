@@ -1,19 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="neard-tool-console" basedir=".">
+  
+  <dirname property="project.basedir" file="${ant.file.neard-tool-console}"/>
+  <property name="root.dir" location="${project.basedir}/.."/>
+  <property name="build.properties" value="${project.basedir}/build.properties"/>
+  <property file="${build.properties}"/>
+  
+  <!-- Neard dev -->
+  <property name="neard-dev.path" location="${root.dir}/neard-dev"/>
+  <fail unless="neard-dev.path" message="Project 'neard-dev' not found in ${neard-dev.path}"/>
+  <echo message="Neard dev found in ${neard-dev.path}" level="debug"/> 
+  
+  <!-- Import build-commons.xml -->
+  <import file="${neard-dev.path}/build/build-commons.xml"/>
+  <!-- Import build-bundle.xml -->
+  <import file="${neard-dev.path}/build/build-bundle.xml"/>
+  
+  <target name="release.build">
+    <basename property="bundle.folder" file="${bundle.path}"/>
+    <replaceproperty src="bundle.folder" dest="bundle.version" replace="${bundle.name}" with=""/>
     
-    <dirname property="project.basedir" file="${ant.file.neard-tool-console}" />
-    <property name="root.dir" location="${project.basedir}/.." />
-    <property name="build.properties" value="${project.basedir}/build.properties" />
-    <property file="${build.properties}" />
+    <getbundlesrc name="${bundle.name}" version="${bundle.version}" propSrcDest="bundle.srcdest" propSrcFilename="bundle.srcfilename"/>
+    <condition property="bundle.srcfinal" value="${bundle.srcdest}/Console2"><available file="${bundle.srcdest}/Console2" type="dir"/></condition>
+    <fail unless="bundle.srcfinal" message="Main folder not found"/>
+    <assertfile file="${bundle.srcfinal}/Console.exe"/>
     
-    <!-- Neard dev -->
-    <property name="neard-dev.path" location="${root.dir}/neard-dev" />
-    <fail unless="neard-dev.path" message="Project 'neard-dev' not found in ${neard-dev.path}" />
-    <echo message="Neard dev found in ${neard-dev.path}" level="debug" /> 
+    <!-- Temp copy -->
+    <copy todir="${bundle.srcfinal}" overwrite="true">
+      <fileset dir="${bundle.path}" defaultexcludes="yes"/>
+    </copy>
     
-    <!-- Import build-commons.xml -->
-    <import file="${neard-dev.path}/build/build-commons.xml" />
-    <!-- Import build-bundle.xml -->
-    <import file="${neard-dev.path}/build/build-bundle.xml" />
+    <!-- TCC/LE -->
+    <if>
+      <available file="${bundle.srcfinal}/tccle.properties" type="file"/>
+      <then>
+        <echo message="Download TCC/LE"/>
+        <property name="tccle.path" location="${bundle.srcfinal}/tccle"/>
+        <property file="${bundle.srcfinal}/tccle.properties"/>
+        <mkdir dir="${tccle.path}"/>
+        <get dest="${build.tmp.path}" src="${tccle}" skipexisting="true"/>
+        <echo message="Extract and check TCC/LE"/>
+        <basename property="tccle.filename" file="${tccle}"/>
+        <unsevenzip src="${build.tmp.path}/${tccle.filename}" dest="${tccle.path}"/>
+        <assertfile file="${tccle.path}/tcc.exe"/>
+        <delete file="${bundle.srcfinal}/tccle.properties"/>
+      </then>
+    </if>
     
+    <!-- ANSICON -->
+    <if>
+      <available file="${bundle.srcfinal}/ansicon.properties" type="file"/>
+      <then>
+        <echo message="Download ANSICON"/>
+        <property name="ansicon.path" location="${bundle.srcfinal}/ansi"/>
+        <property file="${bundle.srcfinal}/ansicon.properties"/>
+        <mkdir dir="${ansicon.path}"/>
+        <get dest="${build.tmp.path}" src="${ansicon}" skipexisting="true"/>
+        <echo message="Extract and check ANSICON"/>
+        <basename property="ansicon.filename" file="${ansicon}"/>
+        <delete dir="${build.tmp.path}/ansicon"/>
+        <unsevenzip src="${build.tmp.path}/${ansicon.filename}" dest="${build.tmp.path}/ansicon"/>
+        <assertfile file="${build.tmp.path}/ansicon/x86/ansicon.exe"/>
+        <copy todir="${ansicon.path}" overwrite="true">
+          <fileset dir="${build.tmp.path}/ansicon/x86"/>
+        </copy>
+        <delete file="${bundle.srcfinal}/ansicon.properties"/>
+      </then>
+    </if>
+    
+    <delete dir="${bundle.tmp.prep.path}/${bundle.folder}"/>
+    <mkdir dir="${bundle.tmp.prep.path}/${bundle.folder}"/>
+    <copy todir="${bundle.tmp.prep.path}/${bundle.folder}" overwrite="true">
+      <fileset dir="${bundle.srcfinal}"/>
+    </copy>
+    <copy todir="${bundle.tmp.prep.path}/${bundle.folder}" overwrite="true">
+      <fileset dir="${bundle.path}" defaultexcludes="yes"/>
+    </copy>
+  </target>
 </project>
