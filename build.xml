@@ -58,7 +58,7 @@
         <echo message="Check ANSICON"/>
         <mkdir dir="${ansicon.path}"/>
         <copy todir="${ansicon.path}" overwrite="true">
-          <fileset dir="${ansicon.dest}/ansicon/x86"/>
+          <fileset dir="${ansicon.dest}/x86"/>
         </copy>
         <assertfile file="${ansicon.path}/ansicon.exe"/>
         <delete file="${bundle.srcfinal}/ansicon.properties"/>
