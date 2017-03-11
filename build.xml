@@ -20,7 +20,7 @@
     <basename property="bundle.folder" file="${bundle.path}"/>
     <replaceproperty src="bundle.folder" dest="bundle.version" replace="${bundle.name}" with=""/>
     
-    <getbundlesrc name="${bundle.name}" version="${bundle.version}" propSrcDest="bundle.srcdest" propSrcFilename="bundle.srcfilename"/>
+    <getmoduleuntouched name="${bundle.name}" version="${bundle.version}" propSrcDest="bundle.srcdest" propSrcFilename="bundle.srcfilename"/>
     <condition property="bundle.srcfinal" value="${bundle.srcdest}/Console2"><available file="${bundle.srcdest}/Console2" type="dir"/></condition>
     <fail unless="bundle.srcfinal" message="Main folder not found"/>
     <assertfile file="${bundle.srcfinal}/Console.exe"/>
@@ -34,14 +34,14 @@
     <if>
       <available file="${bundle.srcfinal}/tccle.properties" type="file"/>
       <then>
-        <echo message="Download TCC/LE"/>
         <property name="tccle.path" location="${bundle.srcfinal}/tccle"/>
         <property file="${bundle.srcfinal}/tccle.properties"/>
+        <download url="${tccle}" returnProperty="tccle.dest"/>
+        <echo message="Check TCC/LE"/>
         <mkdir dir="${tccle.path}"/>
-        <get dest="${build.tmp.path}" src="${tccle}" skipexisting="true"/>
-        <echo message="Extract and check TCC/LE"/>
-        <basename property="tccle.filename" file="${tccle}"/>
-        <unsevenzip src="${build.tmp.path}/${tccle.filename}" dest="${tccle.path}"/>
+        <copy todir="${tccle.path}" overwrite="true">
+          <fileset dir="${tccle.dest}"/>
+        </copy>
         <assertfile file="${tccle.path}/tcc.exe"/>
         <delete file="${bundle.srcfinal}/tccle.properties"/>
       </then>
@@ -54,16 +54,13 @@
         <echo message="Download ANSICON"/>
         <property name="ansicon.path" location="${bundle.srcfinal}/ansi"/>
         <property file="${bundle.srcfinal}/ansicon.properties"/>
+        <download url="${ansicon}" returnProperty="ansicon.dest"/>
+        <echo message="Check ANSICON"/>
         <mkdir dir="${ansicon.path}"/>
-        <get dest="${build.tmp.path}" src="${ansicon}" skipexisting="true"/>
-        <echo message="Extract and check ANSICON"/>
-        <basename property="ansicon.filename" file="${ansicon}"/>
-        <delete dir="${build.tmp.path}/ansicon"/>
-        <unsevenzip src="${build.tmp.path}/${ansicon.filename}" dest="${build.tmp.path}/ansicon"/>
-        <assertfile file="${build.tmp.path}/ansicon/x86/ansicon.exe"/>
         <copy todir="${ansicon.path}" overwrite="true">
-          <fileset dir="${build.tmp.path}/ansicon/x86"/>
+          <fileset dir="${ansicon.dest}/ansicon/x86"/>
         </copy>
+        <assertfile file="${ansicon.path}/ansicon.exe"/>
         <delete file="${bundle.srcfinal}/ansicon.properties"/>
       </then>
     </if>
@@ -74,7 +71,10 @@
       <fileset dir="${bundle.srcfinal}"/>
     </copy>
     <copy todir="${bundle.tmp.prep.path}/${bundle.folder}" overwrite="true">
-      <fileset dir="${bundle.path}" defaultexcludes="yes"/>
+      <fileset dir="${bundle.path}" defaultexcludes="yes" excludes="
+        ansicon.properties,
+        tccle.properties"
+      />
     </copy>
   </target>
 </project>
