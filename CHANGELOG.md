@@ -1,5 +1,10 @@
 # Changelog
 
+## r4 (2017/07/13)
+
+* Replace TCC/LE with Clink (crazy-max/neard#288)
+* Add GnuWin32 CoreUtils (crazy-max/neard#287)
+
 ## r3 (2016/04/29)
 
 * Move icons to Neard core resources
