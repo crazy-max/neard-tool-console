@@ -1,6 +1,6 @@
 # Changelog
 
-## r4 (2017/07/13)
+## r4 (2017/07/15)
 
 * Replace TCC/LE with Clink (crazy-max/neard#288)
 * Add GnuWin32 CoreUtils (crazy-max/neard#287)
