@@ -2,8 +2,8 @@
 
 ## r4 (2017/07/15)
 
-* Replace TCC/LE with Clink (crazy-max/neard#288)
-* Add GnuWin32 CoreUtils (crazy-max/neard#287)
+* Replace TCC/LE with Clink (neard/neard#288)
+* Add GnuWin32 CoreUtils (neard/neard#287)
 * Bundle pack p1 has been renamed 2.00.148.1
 * Bundle pack p2 has been renamed 2.00.148.2
 
