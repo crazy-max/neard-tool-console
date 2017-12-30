@@ -1,5 +1,10 @@
 # Changelog
 
+## r5 (2017/12/30)
+
+* Update Clink to 0.4.9
+* Update Clink completions to 0.3.3
+
 ## r4 (2017/07/15)
 
 * Replace TCC/LE with Clink (neard/neard#288)
