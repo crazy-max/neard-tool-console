@@ -4,6 +4,7 @@
 
 * Update Clink to 0.4.9
 * Update Clink completions to 0.3.3
+* Wrong version in neard.conf
 
 ## r4 (2017/07/15)
 

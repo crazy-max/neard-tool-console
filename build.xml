@@ -105,7 +105,7 @@
             <property name="gnuwin32_coreutils_bin.path" location="${bundle.srcfinal}/vendor/gnuwin32"/>
             <download url="${console.gnuwin32_coreutils_bin}" returnProperty="gnuwin32_coreutils_bin.dest"/>
             <echo message="Check GnuWin32 CoreUtils bin"/>
-            <mkdir dir="${ansicon.path}"/>
+            <mkdir dir="${gnuwin32_coreutils_bin.path}"/>
             <copy todir="${gnuwin32_coreutils_bin.path}" overwrite="true">
               <fileset dir="${gnuwin32_coreutils_bin.dest}/bin"/>
             </copy>
