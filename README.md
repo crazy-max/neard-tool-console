@@ -5,7 +5,7 @@ This is a module of [Neard project](https://github.com/neard/neard) involving Co
 
 ## Documentation and downloads
 
-http://neard.io/modules/console
+https://neard.io/modules/console
 
 ## Issues
 
